@@ -10,8 +10,8 @@
 // @include        https://cloud.feedly.com/*
 // @grant       GM_getValue
 // @grant       GM_setValue
-// @downloadURL https://userscripts.org/scripts/source/166388.user.js
-// @updateURL   https://userscripts.org/scripts/source/166388.meta.js
+// @downloadURL https://raw.githubusercontent.com/dmahr1/feedly-enhancer-chrome/master/feedly-enhancer-chrome.js
+// @updateURL   https://raw.githubusercontent.com/dmahr1/feedly-enhancer-chrome/master/feedly-enhancer-chrome.js
 // @version    	2.3.2
 // @run-at     document-end
 // @require https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js
