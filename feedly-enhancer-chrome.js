@@ -222,7 +222,7 @@ function addFECssStyles(){
         "#latesttab {margin-top: 10px;}"+ //Reduce margin of top area
         "#.icon.handle {padding-right: 0 !important;}"+ //Remove padding to right of feed counter
         "#feedlyTabs {width: 238px !important;padding-left: 10px !important;padding-right: 20px !important;}"+ //Reduce padding in feed list
-        
+        ".separator {display: none;}"+ //Remove new separator at top of navigation
         ""
         
     );
