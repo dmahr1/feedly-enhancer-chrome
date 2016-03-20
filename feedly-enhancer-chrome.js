@@ -19,7 +19,7 @@
 // @license    	GPL version 3 or any later version; http://www.gnu.org/copyleft/gpl.html
 // ==/UserScript==
 
-var DEBUG_MODE = false;
+var DEBUG_MODE = true;
 //Icons
 var PLUS_ICON = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABmJLR0QARABEAERSEuVjAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAB3RJTUUH3QoZFikCtzaE4AAAAC5JREFUGNNj/P//PwMycHV1/c/AwMCwe/duRmRxJgYiAfUVMrq4uPynrolDwNcArKQP11nqnLEAAAAASUVORK5CYII=";
 var PLUS_ICON_WHITE = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABmJLR0QARABEAERSEuVjAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAB3RJTUUH3QoZFikhFVH1kgAAACZJREFUGNNj/P//PwMagAkwIgsyMRAJqK+QBclNuNxKuomMg9zXALlGBxS2xqKSAAAAAElFTkSuQmCC";
@@ -217,7 +217,8 @@ function addFECssStyles(){
         
         //dmahr changes below
 		"#feedlyTabsHolder .favicon {margin: 3px;}"+//Reduce favicon margin for lower line height in feeds list
-		".feedUnreadCount, .feedIndex, .tab .feedIndexTitleHolder {line-height:22px;}"+ //Reduce line height in feeds list
+		".feedIndex, .tab .feedIndexTitleHolder {line-height:22px;height:22px;}"+ //Reduce line height in feeds list
+        "#feedlyTabsHolder div.simpleUnreadCount {line-height:22px;height:22px;}"+ //Reduce line height in feeds list
 		"#feedlyTabsHolder.pinned #feedlyTabsUnpin, #feedlyTabsPin {display:none;} "+ //Hide pin/unpin button at top
         "#latesttab {margin-top: 10px;}"+ //Reduce margin of top area
         "#.icon.handle {padding-right: 0 !important;}"+ //Remove padding to right of feed counter
