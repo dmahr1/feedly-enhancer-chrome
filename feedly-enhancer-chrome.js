@@ -86,11 +86,16 @@ function classChanges() {
     //Add class to header
     $('#mytab').parent().addClass('feTabParents');
 
+    //Add elements to footer
+    menuHolder.next().next().next().prependTo($('#librarytab').parent())
+    //menuHolder.next().next().next().addClass('feHideElement');
+    //$(".secondaryPanelButton").addClass('feHideElement');
+    
+    
     //Hide elements
     $('#feedlyTabsPin').parent().addClass('feHideElement');
     $("#mytab_label").addClass('feHideElement');
     $("#savedtab_label").addClass('feHideElement');
-    $(".secondaryPanelButton").addClass('feHideElement');
     $(".moreHandle").addClass('feHideElement');
     $(".moreHandle").next().next().addClass('feHideElement');
     
