@@ -33,7 +33,7 @@ function addGlobalStyle(css) {
 //Mutation observer to reapply changes after Feedly is refreshed
 var feedlyTabsObserver = null;
 function initRefreshObserver(){
-    if (feedlyTabsObserver == null && $('#feedlyTabs').length > 0) {
+    if (feedlyTabsObserver === null && $('#feedlyTabs').length > 0) {
         feedlyTabsObserver = new MutationObserver(function(mutations) {
             var refreshObserved = false;
             mutations.forEach(function(mutation) {
@@ -56,12 +56,12 @@ function initRefreshObserver(){
 addGlobalStyle(
 
     //Hide elements
-    ".feHideElement { display: none !important; }" + 
-    ".feInlineBlock { display: inline-block !important; }" +    
+    ".feHideElement { display: none !important; }" +
+    ".feInlineBlock { display: inline-block !important; }" +
 
     //Styling for header items (today, save for later)
-    ".feTabParents { margin: 0 0 0 0 !important;line-height: 15px; }" +     
-    
+    ".feTabParents { margin: 0 0 0 0 !important;line-height: 15px; }" +
+
     //Adjust feed list line height
     "#feedlyTabsHolder .favicon {margin: 3px !important;}"+
     ".feedIndex, .tab .feedIndexTitleHolder {line-height:22px !important;height:22px !important;}"+
@@ -69,36 +69,37 @@ addGlobalStyle(
 
     //Remove padding to right of feed counter
     "#.icon.handle {padding-right: 0 !important !important;}"+
-    
+
     //Reduce padding in feed list
     "#feedlyTabs {width: 238px !important;padding-left: 10px !important;padding-right: 20px !important;}"+
-    
+
     ""
 );
 
 //Class changes
 function classChanges() {
-    
+
     //Add div to main. This is what is observed for mutations
     var menuHolder = $('<div/>', { 'id': 'menuHolder'}).css('line-height', '17px');
     menuHolder.prependTo('#feedlyTabs');
-    
+
     //Add class to header
     $('#mytab').parent().addClass('feTabParents');
 
     //Add elements to footer
-    menuHolder.next().next().next().prependTo($('#librarytab').parent())
+    menuHolder.next().next().next().prependTo($('#librarytab').parent());
     //menuHolder.next().next().next().addClass('feHideElement');
     //$(".secondaryPanelButton").addClass('feHideElement');
-    
-    
+
+
     //Hide elements
     $('#feedlyTabsPin').parent().addClass('feHideElement');
     $("#mytab_label").addClass('feHideElement');
     $("#savedtab_label").addClass('feHideElement');
+    $(".separator").addClass('feHideElement');
     $(".moreHandle").addClass('feHideElement');
     $(".moreHandle").next().next().addClass('feHideElement');
-    
+
     //Inline block
     $("#mytab").addClass('feInlineBlock');
     $("#savedtab").addClass('feInlineBlock');
