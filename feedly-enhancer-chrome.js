@@ -12,7 +12,7 @@
 // @grant       GM_setValue
 // @downloadURL https://raw.githubusercontent.com/dmahr1/feedly-enhancer-chrome/master/feedly-enhancer-chrome.js
 // @updateURL   https://raw.githubusercontent.com/dmahr1/feedly-enhancer-chrome/master/feedly-enhancer-chrome.js
-// @version    	4.0.2
+// @version    	4.0.3
 // @run-at     document-end
 // @require https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js
 // @license    	Creative Commons; http://creativecommons.org/licenses/by-nc-sa/3.0/
@@ -73,6 +73,13 @@ addGlobalStyle(
     //Reduce padding in feed list
     "#feedlyTabs {width: 238px !important;padding-left: 10px !important;padding-right: 20px !important;}"+
 
+    //Reduce padding in title
+    "#searchBarFX {height:44px !important; padding:6px 0 !important;}"+
+    "#feedlyPageFX div.board header.header {margin-bottom: 0 !important;}"+
+    "#feedlyPageFX div.board header.header div.right-col {padding-top: 0 !important;}"+
+    "#feedlyPageFX div.board header.header h1 {margin-top: 0 !important;}"+
+    "#feedlyPageFX div.board div div h4 {margin-top: 10px !important;}"+    
+    
     ""
 );
 
