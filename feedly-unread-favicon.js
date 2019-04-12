@@ -199,7 +199,7 @@ function FeedlyFavIconAlerts() {
             var headerDivs = header.getElementsByTagName('div');
             for (i = 0; i < headerDivs.length; i++)
             {
-                if (headerDivs[i].className.indexOf('categoryUnreadCount') >= 0)
+                if (headerDivs[i].className.indexOf('streamUnreadCount') >= 0)
                 {
                     var unreadCountString = headerDivs[i].innerHTML.replace(/[^0-9]+/gi, '');
 					if (unreadCountString == null || unreadCountString == undefined || unreadCountString.length == 0)
@@ -208,12 +208,12 @@ function FeedlyFavIconAlerts() {
 					} else {
                         unreadCount = parseInt(unreadCountString, 10)
                     }
-                }                
-            }            
+                }
+            }
         }
         return unreadCount
     }
-    
+
 /* 	this.getUnreadCount = function() {
 		var feedCategory = [];
 		var feedUnreadNumbers = [];
