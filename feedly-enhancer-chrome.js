@@ -12,12 +12,13 @@
 // @grant       GM_setValue
 // @downloadURL https://raw.githubusercontent.com/dmahr1/feedly-enhancer-chrome/master/feedly-enhancer-chrome.js
 // @updateURL   https://raw.githubusercontent.com/dmahr1/feedly-enhancer-chrome/master/feedly-enhancer-chrome.js
-// @version    	4.0.3
+// @version    	4.0.4
 // @run-at     document-end
 // @require https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js
 // @license    	Creative Commons; http://creativecommons.org/licenses/by-nc-sa/3.0/
 // @license    	GPL version 3 or any later version; http://www.gnu.org/copyleft/gpl.html
 // ==/UserScript==
+
 
 //Function to add CSS styles
 function addGlobalStyle(css) {
@@ -30,104 +31,33 @@ function addGlobalStyle(css) {
     head.appendChild(style);
 }
 
-//Mutation observer to reapply changes after Feedly is refreshed
-var feedlyTabsObserver = null;
-function initRefreshObserver(){
-    if (feedlyTabsObserver === null && $('#feedlyTabs').length > 0) {
-        feedlyTabsObserver = new MutationObserver(function(mutations) {
-            var refreshObserved = false;
-            mutations.forEach(function(mutation) {
-                if (mutation.type == "childList"){
-                    if(mutation.removedNodes.length > 0){
-                        for(var i = 0; i < mutation.removedNodes.length; i++){
-                            if(mutation.removedNodes[i].id == 'menuHolder') refreshObserved = true;
-                        }
-                    }
-                }
-            });
-            if(refreshObserved) {
-                classChanges();
-            }
-        }).observe(document.getElementById("feedlyTabs"), { childList: true});
-    }
-}
-
 //CSS changes
 addGlobalStyle(
 
-    //Hide elements
-    ".feHideElement { display: none !important; }" +
-    ".feInlineBlock { display: inline-block !important; }" +
+    `
+    /* Smaller top border in navigation panel */
+    .m-t-2 { margin-top: 5px !important; }
+    .m-t-2 .LeftnavListRow { display: inline; padding-right: 0px; }
+    .m-t-2 .LeftnavListRow .LeftnavListRow__text { display: none; }
 
-    //Styling for header items (today, save for later)
-    ".feTabParents { margin: 0 0 0 0 !important;line-height: 15px; }" +
+    /* Hide the "show more" links */
+    .LeftnavListRow--link { display: none; }
 
-    //Adjust feed list line height
-    "#feedlyTabsHolder .favicon {margin: 3px !important;}"+
-    ".feedIndex, .tab .feedIndexTitleHolder {line-height:22px !important;height:22px !important;}"+
-    "#feedlyTabsHolder div.simpleUnreadCount {line-height:22px !important;height:22px !important;}"+
-
-    //Remove padding to right of feed counter
-    "#.icon.handle {padding-right: 0 !important !important;}"+
-
-    //Reduce padding in feed list
-    "#feedlyTabs {width: 238px !important;padding-left: 10px !important;padding-right: 20px !important;}"+
-
-    //Reduce padding in title
-    "#searchBarFX {height:44px !important; padding:6px 0 !important;}"+
-    "#feedlyPageFX div.board header.header {margin-bottom: 0 !important;}"+
-    "#feedlyPageFX div.board header.header div.right-col {padding-top: 0 !important;}"+
-    "#feedlyPageFX div.board header.header h1 {margin-top: 0 !important;}"+
-    "#feedlyPageFX div.board div div h4 {margin-top: 10px !important;}"+    
-    
-    ""
-);
-
-//Class changes
-function classChanges() {
-
-    //Add div to main. This is what is observed for mutations
-    var menuHolder = $('<div/>', { 'id': 'menuHolder'}).css('line-height', '17px');
-    menuHolder.prependTo('#feedlyTabs');
-
-    //Add class to header
-    $('#mytab').parent().addClass('feTabParents');
-
-    //Add elements to footer
-    menuHolder.next().next().next().prependTo($('#librarytab').parent());
-    //menuHolder.next().next().next().addClass('feHideElement');
-    //$(".secondaryPanelButton").addClass('feHideElement');
-
-
-    //Hide elements
-    $('#feedlyTabsPin').parent().addClass('feHideElement');
-    $("#mytab_label").addClass('feHideElement');
-    $("#savedtab_label").addClass('feHideElement');
-    $(".separator").addClass('feHideElement');
-    $(".moreHandle").addClass('feHideElement');
-    $(".moreHandle").next().next().addClass('feHideElement');
-
-    //Inline block
-    $("#mytab").addClass('feInlineBlock');
-    $("#savedtab").addClass('feInlineBlock');
-}
-
-//Initialization
-function main(count){
-    if ($("#savedtab").length > 0 ) {
-        classChanges();
-        initRefreshObserver();
-    }else{
-        if(count <= 80) {
-            console.debug('element not found, waiting 1s');
-            setTimeout(function(){
-                main(count+1);
-            }, 1000);
-        }
+    /* make rows take up more width and be less tall */
+    .LeftnavListRow.LeftnavListRow--child {
+        padding-left: 10px;
+        line-height: 1.5rem;
     }
-}
+    .LeftnavList__heading { padding-top: 8px; }
 
-//Main
-$(document).ready(function() {
-    main(1);
-});
+    /* Less whitespace in article reading area */
+    #searchBarFX { display: none; }
+    #feedlyPageHolderFX { padding: 0px; }
+    #feedlyPageFX .board h4 { margin-top: 16px; }
+
+    /* Wider article reading area */
+    .entryBody { max-width: 800px !important; }
+    .u100Entry { max-width: 800px !important; }
+    `
+
+);
