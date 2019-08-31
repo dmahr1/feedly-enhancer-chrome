@@ -20,7 +20,7 @@
 // ==UserScript==
 // @name          feedly-unread-favicon
 // @description   Places unread count in favicon and title bar
-// @version       1.4
+// @version       1.4.1
 // @include       http://feedly.com/*
 // @include       https://feedly.com/*
 // @include       http://www.feedly.com/*
@@ -192,20 +192,14 @@ function FeedlyFavIconAlerts() {
   }
 
   this.getUnreadCount = function () {
-    var unreadCount = 0
-    var header = document.getElementById('latesttab_header');
-    if (header != null) {
-      var headerDivs = header.getElementsByTagName('div');
-      for (i = 0; i < headerDivs.length; i++) {
-        if (headerDivs[i].className.indexOf('streamUnreadCount') >= 0) {
-          var unreadCountString = headerDivs[i].innerHTML.replace(/[^0-9]+/gi, '');
-          if (unreadCountString == null || unreadCountString == undefined || unreadCountString.length == 0) {
-            unreadCount = 0
-          } else {
-            unreadCount = parseInt(unreadCountString, 10)
-          }
-        }
-      }
+    var unreadCount = 0;
+    var leftNav = document.getElementsByClassName('LeftnavList__feed-list')[0];
+    var countElement = leftNav.getElementsByClassName('LeftnavListRow__count')[0];
+    var unreadCountString = countElement.innerHTML.replace(/[^0-9]+/gi, '');
+    if (unreadCountString == null || unreadCountString == undefined || unreadCountString.length == 0) {
+        unreadCount = 0
+    } else {
+        unreadCount = parseInt(unreadCountString, 10)
     }
     return unreadCount
   }
@@ -239,8 +233,8 @@ function FeedlyFavIconAlerts() {
 
     var digit;
     var digitsWidth = bgWidth;
-    for (var index = 0; index < count; index++) {
-      digit = unread[index];
+    for (var i = 0; i < count; i++) {
+      digit = unread[i];
       if (self.pixelMaps.numbers[digit]) {
         var map = self.pixelMaps.numbers[digit];
         var height = map.length;
@@ -297,10 +291,11 @@ function FeedlyFavIconAlerts() {
   }
 
   this.pollIcon = function () {
-    if (self.getUnreadCount() != 0)
+    if (self.getUnreadCount() != 0) {
       self.setIcon(self.getUnreadCountIcon());
-    else
+    } else {
       self.setIcon(self.icons.read);
+    }
   }
 
   this.pollTitle = function () {
@@ -311,12 +306,13 @@ function FeedlyFavIconAlerts() {
 
   this.setIcon = function (icon) {
     var links = self.head.getElementsByTagName("link");
-    for (var i = 0; i < links.length; i++)
-      if ((links[i].rel == "shortcut icon" || links[i].rel == "icon") &&
-        links[i].href != icon)
+    for (var i = 0; i < links.length; i++) {
+      if ((links[i].rel == "shortcut icon" || links[i].rel == "icon") && links[i].href != icon) {
         self.head.removeChild(links[i]);
-      else if (links[i].href == icon)
+      } else if (links[i].href == icon) {
         return;
+      }
+    }
 
     var newIcon = document.createElement("link");
     newIcon.type = "image/png";
