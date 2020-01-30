@@ -54,6 +54,7 @@ addGlobalStyle(
     #searchBarFX { display: none; }
     #feedlyPageHolderFX { padding: 0px; }
     #feedlyPageFX .board h4 { margin-top: 16px; }
+    #topHeaderBarFX { display: none; }
 
     /* Wider article reading area */
     .entryBody { max-width: 800px !important; }
