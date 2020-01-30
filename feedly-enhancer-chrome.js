@@ -12,7 +12,7 @@
 // @grant       GM_setValue
 // @downloadURL https://raw.githubusercontent.com/dmahr1/feedly-enhancer-chrome/master/feedly-enhancer-chrome.js
 // @updateURL   https://raw.githubusercontent.com/dmahr1/feedly-enhancer-chrome/master/feedly-enhancer-chrome.js
-// @version    	4.0.4
+// @version    	4.0.5
 // @run-at     document-end
 // @require https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js
 // @license    	Creative Commons; http://creativecommons.org/licenses/by-nc-sa/3.0/
