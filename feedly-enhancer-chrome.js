@@ -12,7 +12,7 @@
 // @grant       GM_setValue
 // @downloadURL https://raw.githubusercontent.com/dmahr1/feedly-enhancer-chrome/master/feedly-enhancer-chrome.js
 // @updateURL   https://raw.githubusercontent.com/dmahr1/feedly-enhancer-chrome/master/feedly-enhancer-chrome.js
-// @version    	4.0.5
+// @version    	4.0.6
 // @run-at     document-end
 // @require https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js
 // @license    	Creative Commons; http://creativecommons.org/licenses/by-nc-sa/3.0/
@@ -41,7 +41,7 @@ addGlobalStyle(
     .m-t-2 .LeftnavListRow .LeftnavListRow__text { display: none; }
 
     /* Hide the "show more" links */
-    .LeftnavListRow--link { display: none; }
+    .LeftnavListRow--link { display: none !important; }
 
     /* make rows take up more width and be less tall */
     .LeftnavListRow.LeftnavListRow--child {
@@ -49,6 +49,7 @@ addGlobalStyle(
         line-height: 1.5rem;
     }
     .LeftnavList__heading { padding-top: 8px; }
+    .LeftnavListRow {height: 1.6rem; padding-left: 10px;}
 
     /* Less whitespace in article reading area */
     #searchBarFX { display: none; }
