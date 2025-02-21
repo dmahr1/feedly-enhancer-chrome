@@ -36,20 +36,18 @@ addGlobalStyle(
 
     `
     /* Smaller top border in navigation panel */
-    .m-t-2 { margin-top: 5px !important; }
-    .m-t-2 .LeftnavListRow { display: inline; padding-right: 0px; }
-    .m-t-2 .LeftnavListRow .LeftnavListRow__text { display: none; }
+    .LeftnavList__static-links { display: none; }
 
     /* Hide the "show more" links */
-    .LeftnavListRow--link { display: none !important; }
+    .LeftnavCollection__more { display: none !important; }
 
     /* make rows take up more width and be less tall */
-    .LeftnavListRow.LeftnavListRow--child {
+    .LeftnavItem__content.LeftnavItem__content--child {
         padding-left: 10px;
         line-height: 1.5rem;
     }
-    .LeftnavList__heading { padding-top: 8px; }
-    .LeftnavListRow {height: 1.6rem; padding-left: 10px;}
+    .LeftnavItem__content {height: 1.5rem; padding-left: 15px;}
+    .LeftnavItem__icon { height: 20px; line-height: 20px; padding-top: 2px; }
 
     /* Less whitespace in article reading area */
     #searchBarFX { display: none; }
