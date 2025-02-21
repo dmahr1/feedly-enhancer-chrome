@@ -20,7 +20,7 @@
 // ==UserScript==
 // @name          feedly-unread-favicon
 // @description   Places unread count in favicon and title bar
-// @version       1.4.1
+// @version       1.4.2
 // @include       http://feedly.com/*
 // @include       https://feedly.com/*
 // @include       http://www.feedly.com/*
@@ -194,7 +194,7 @@ function FeedlyFavIconAlerts() {
   this.getUnreadCount = function () {
     var unreadCount = 0;
     var leftNav = document.getElementsByClassName('LeftnavList__feed-list')[0];
-    var countElement = leftNav.getElementsByClassName('LeftnavListRow__count')[0];
+    var countElement = leftNav.getElementsByClassName('LeftnavUnreadCount')[0];
     var unreadCountString = countElement.innerHTML.replace(/[^0-9]+/gi, '');
     if (unreadCountString == null || unreadCountString == undefined || unreadCountString.length == 0) {
         unreadCount = 0
